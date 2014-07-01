@@ -121,6 +121,8 @@ public class DependencyPanel extends IzPanel implements ActionListener {
 
         if (DependencyPanelUtils.isDependencySatisfied(dependencyList, dependencyTests)) {
             setHidden(true);
+            parent.unlockNextButton();
+            parent.skipPanel();
             return;
         }
 
