@@ -105,6 +105,7 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     public void panelActivate() {
         if (isHidden()) {
             parent.skipPanel();
+            return;
         }
         if ((checkBox == null) || !(checkBox.isSelected())) {
             parent.lockNextButton();
