@@ -4,7 +4,7 @@ RV-Install is a unified installer for all RV products.
 
 The idea is to create a single Jar which, when included as a dependency in other projects,
 enables the creation of an installer with all necessary and sufficient features for the
-support of RV Products
+support of RV Products.
 
 Requirements
 =========
@@ -33,4 +33,4 @@ Jar, and added to RV-Install's output Jar (yes, a Jar within a Jar).
 
 This is a requirement of IzPack and helps us avoid compiling from source.  So, to add a custom panel, place
 its source in the "src" folder and add an ant task that builds a Jar of it in "res/panels" 
-(as in DependencyPanel).
+(base this off DependencyPanel's task in build.xml).
