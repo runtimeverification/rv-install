@@ -26,8 +26,7 @@
         <mkdir dir="${rv-install.bin}"/>
         <javac srcdir="${rv-install.src}" destdir="${rv-install.bin}"/>
         <mkdir dir="${rv-install.res}/panels"/>
-        <!-- Required when adding new panels to installer (to avoid compiling izpack) - Compile Panel JAR to res/panels -->
-        <jar destfile="${rv-install.res}/panels/DependencyPanel.jar" basedir="${rv-install.bin}" includes="com/izforge/izpack/panels/*"/>
+        <jar destfile="${rv-install.res}/panels/RVPanels.jar" basedir="${rv-install.bin}" includes="com/izforge/izpack/panels/*"/>
     </target>
 
     <target name="jar" depends="compile">

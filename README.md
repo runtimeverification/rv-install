@@ -32,5 +32,5 @@ To add a custom panel, a Jar must also be created from its sources separately fr
 Jar, and added to RV-Install's output Jar (yes, a Jar within a Jar).
 
 This is a requirement of IzPack and helps us avoid compiling from source.  So, to add a custom panel, place
-its source in the "src" folder and add an ant task that builds a Jar of it in "res/panels" 
-(base this off DependencyPanel's task in build.xml).
+its source in the "src" folder.  When referring to it in XML's, extract the res directory from the RV-Install
+Jar and use the RVPanels Jar as the source for your custom panel (see how DependencyPanel is used).
