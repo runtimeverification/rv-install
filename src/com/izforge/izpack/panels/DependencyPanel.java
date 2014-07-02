@@ -166,10 +166,16 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     @Override
     public void panelDeactivate() {
         if (!isHidden() && dependencyList != null && checkBox.isSelected()) {
-            if (!DependencyPanelUtils.isDependencySatisfied(dependencyList, dependencyTests)) {
+            boolean isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0;
+            if (!isWindows && !DependencyPanelUtils.isDependencySatisfied(dependencyList, dependencyTests)) {
                 emitWarning("Warning!", "<html> We have detected that the dependency is still not satisfied"
                     + " in a way <br> that would make the installed program execute correctly. <br><br> Continuing anyway "
                     + "may make it impossible for the installed application to correctly execute. </html>");
+            }
+            if (isWindows) {
+                emitWarning("Warning!", "<html> We could not detect if the dependency was satisfied properly."
+                    + "<br> To ensure a correct install of this product, we recommend restarting the installer.  <br><br>"
+                    + "If you are sure the dependency is installed and added to the PATH, continue the install. </html>");
             }
         }
     }
