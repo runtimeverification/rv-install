@@ -45,10 +45,12 @@ public class DependencyPanel extends IzPanel implements ActionListener {
 
     private static final long serialVersionUID = 3257848774955905587L;
     private JCheckBox checkBox;
+    private JPanel panel;
+    private JLabel htmlLabel;
+    private JLabel urlLabel;
     private ArrayList<String> dependencyList;
     private ArrayList<DependencyPanelTest> dependencyTests;
     private boolean initialized = false;
-    private JPanel panel;
 
     /**
      * The constructor
@@ -71,10 +73,15 @@ public class DependencyPanel extends IzPanel implements ActionListener {
      */
     public DependencyPanel(InstallerFrame parent, InstallData idata, LayoutManager2 layout) {
         super(parent, idata, layout);
-        JPanel panel = new JPanel();
-        add(panel);
+        panel = new JPanel();
+        panel.setPreferredSize(new Dimension(500, 600));
+        panel.setVisible(false);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        this.panel = panel;
+        htmlLabel = new JLabel();
+        panel.add(htmlLabel, NEXT_LINE);
+        panel.add(IzPanelLayout.createParagraphGap());
+        add(panel);
+        getLayoutHelper().completeLayout();
     }
 
     /**
@@ -115,8 +122,23 @@ public class DependencyPanel extends IzPanel implements ActionListener {
         }
         initialized = true;
         final String dependencyId = DependencyPanelUtils.getId(idata);
-        final String dependencySite = DependencyPanelUtils.getDependencySite(idata, dependencyId);
         final String dependencyHTML = DependencyPanelUtils.getDependencyHTML(dependencyId);
+        final String dependencySite = DependencyPanelUtils.getDependencySite(idata, dependencyId);
+
+        htmlLabel.setText(dependencyHTML);
+
+        urlLabel = new JLabel();
+        urlLabel.setText("<html><font color=\"blue\"><u>" + dependencySite + "</u></font><br><br></html>");
+        panel.add(Box.createRigidArea(new Dimension(0,15)));
+        panel.add(new JLabel("Click here to download the dependency:"));
+        panel.add(urlLabel);
+        checkBox = new JCheckBox("<html> I have installed the dependency and added it to the PATH "
+            + "<br> (failure to do so may lead to errors in the installed packages). </html>", false);
+        panel.add(checkBox, NEXT_LINE);
+        checkBox.addActionListener(this);
+
+        panel.setVisible(true);
+
         dependencyList = DependencyPanelUtils.getDependencies(idata, dependencyId);
         dependencyTests = DependencyPanelUtils.getDependencyTests(idata, dependencyId);
 
@@ -127,19 +149,11 @@ public class DependencyPanel extends IzPanel implements ActionListener {
             return;
         }
 
-        JLabel htmlLabel = new JLabel(dependencyHTML);
-        panel.add(htmlLabel, NEXT_LINE);
-        panel.add(IzPanelLayout.createParagraphGap());
-        panel.add(Box.createRigidArea(new Dimension(0,15)));
-
-        panel.add(new JLabel("Click here to download the dependency:"));
-        final JLabel label = new JLabel("<html><font color=\"blue\"><u>" + dependencySite + "</u></font><br><br></html>");
-        panel.add(label);
-        label.addMouseListener(new java.awt.event.MouseAdapter() {
+        urlLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if(evt.getClickCount() > 0){
-                    label.setText("<html><font color=\"red\"><u>" + dependencySite + "</u></font><br><br></html>");
+                    urlLabel.setText("<html><font color=\"red\"><u>" + dependencySite + "</u></font><br><br></html>");
                     openBrowser(dependencySite);
                 }
             }
@@ -155,12 +169,9 @@ public class DependencyPanel extends IzPanel implements ActionListener {
             }
         });
 
-        checkBox = new JCheckBox("<html> I have installed the dependency and added it to the PATH "
-            + "<br> (failure to do so may lead to errors in the installed packages). </html>", false);
-        panel.add(checkBox, NEXT_LINE);
-        checkBox.addActionListener(this);
+        panel.revalidate();
+        panel.repaint();
 
-        getLayoutHelper().completeLayout();
     }
 
     @Override
