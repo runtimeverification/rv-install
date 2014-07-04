@@ -2,6 +2,6 @@
     <str id="LicencePanel.headline" txt="License" />
     <str id="DependencyPanel.headline" txt="Dependencies" />
     <str id="PacksPanel.headline" txt="Packages" />
-    <str id="HTMLFinishInfoPanel.headline" txt="Install Complete" />
+    <str id="HTMLFinishInfoPanel.headline" txt="Complete" />
     <str id="installer.reversetitle" txt="$APP_NAME - Install"/>
 </langpack>

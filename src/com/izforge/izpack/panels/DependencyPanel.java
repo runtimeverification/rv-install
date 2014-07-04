@@ -74,7 +74,7 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     public DependencyPanel(InstallerFrame parent, InstallData idata, LayoutManager2 layout) {
         super(parent, idata, layout);
         panel = new JPanel();
-        panel.setPreferredSize(new Dimension(550, 700));
+        panel.setPreferredSize(new Dimension(400, 700));
         panel.setVisible(false);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         htmlLabel = new JLabel();
@@ -178,9 +178,10 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     public void panelDeactivate() {
         if (!isHidden() && dependencyList != null && checkBox.isSelected()) {
             if (!DependencyPanelUtils.isDependencySatisfied(dependencyList, dependencyTests)) {
-                emitWarning("Warning!", "<html> We have detected that the dependency is still not satisfied"
-                    + " in a way <br> that would make the installed program execute correctly. <br><br> We recommend you" 
-                    + " <b>restart this installer</b> before continuing. <br><br> Continuing anyway "
+                emitWarning("Warning!", "<html> We have detected that the dependency is still not satisfied in a way that would make the "
+                    + "<br>installed program execute correctly." 
+                    + "<br><br> We recommend you properly <b>install the dependency</b>, making sure your PATH is updated appropriately,"
+                    + "<br>then <b>restart this installer</b> before continuing. <br><br> Continuing anyway "
                     + "may make it impossible for the installed application to correctly execute. </html>");
             }
         }
