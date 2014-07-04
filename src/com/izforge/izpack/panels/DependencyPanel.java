@@ -74,7 +74,7 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     public DependencyPanel(InstallerFrame parent, InstallData idata, LayoutManager2 layout) {
         super(parent, idata, layout);
         panel = new JPanel();
-        panel.setPreferredSize(new Dimension(500, 600));
+        panel.setPreferredSize(new Dimension(550, 700));
         panel.setVisible(false);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         htmlLabel = new JLabel();
