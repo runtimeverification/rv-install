@@ -133,7 +133,7 @@ public class DependencyPanel extends IzPanel implements ActionListener {
         panel.add(new JLabel("Click here to download the dependency:"));
         panel.add(urlLabel);
         checkBox = new JCheckBox("<html> I have installed the dependency and added it to the PATH "
-            + "<br> (failure to do so may lead to errors in the installed packages). </html>", false);
+            + " (failure to do so may lead to errors in the installed packages). </html>", false);
         panel.add(checkBox, NEXT_LINE);
         checkBox.addActionListener(this);
 
