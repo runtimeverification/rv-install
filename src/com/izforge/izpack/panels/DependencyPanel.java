@@ -24,6 +24,7 @@ import com.izforge.izpack.gui.IzPanelLayout;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
+import com.izforge.izpack.util.AbstractUIHandler;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -175,20 +176,19 @@ public class DependencyPanel extends IzPanel implements ActionListener {
     }
 
     @Override
-    public void panelDeactivate() {
+    public boolean isValidated() {
         if (!isHidden() && dependencyList != null && checkBox.isSelected()) {
             if (!DependencyPanelUtils.isDependencySatisfied(dependencyList, dependencyTests)) {
-                emitWarning("Warning!", "<html> We have detected that the dependency is still not satisfied in a way that would make the "
-                    + "<br>installed program execute correctly." 
+                int res = askQuestion(parent.langpack.getString("installer.warning"), "<html> We have detected that the dependency is "
+                    + "still not satisfied in a way that would make the <br>installed program execute correctly."
                     + "<br><br> We recommend you properly <b>install the dependency</b>, making sure your PATH is updated appropriately,"
                     + "<br>then <b>restart this installer</b> before continuing. <br><br> Continuing anyway "
-                    + "may make it impossible for the installed application to correctly execute. </html>");
+                    + "may make it impossible for the installed application to correctly execute. <br><br> Continue? </html>",
+                    AbstractUIHandler.CHOICES_YES_NO, AbstractUIHandler.ANSWER_YES);
+
+                return res == AbstractUIHandler.ANSWER_YES;
             }
         }
-    }
-
-    @Override
-    public boolean isValidated() {
         return true;
     }
 
