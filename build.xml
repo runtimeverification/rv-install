@@ -1,6 +1,6 @@
 <project name="rv-install" default="all">
 
-    <property name="rv-install.version" value="0.1"/>
+    <property name="rv-install.version" value="0.2"/>
     <property name="rv-install.bin" location="bin"/>
     <property name="rv-install.dist" location="dist"/>
     <property name="rv-install.izpack" location="izpack-5.0-rc2"/>
