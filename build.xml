@@ -3,7 +3,7 @@
     <property name="rv-install.version" value="0.1"/>
     <property name="rv-install.bin" location="bin"/>
     <property name="rv-install.dist" location="dist"/>
-    <property name="rv-install.izpack" location="izpack-4.3"/>
+    <property name="rv-install.izpack" location="izpack-5.0-rc2"/>
     <property name="rv-install.res" location="res"/>
     <property name="rv-install.src" location="src"/>
 
@@ -14,19 +14,17 @@
         <delete dir="${rv-install.res}/panels"/>
     </target>
 
-    <target name="unjar-izpack" depends="clean">
-        <unzip dest="${rv-install.bin}">
-            <fileset dir="${rv-install.izpack}">
-                <include name="*.jar"/>
-            </fileset>
-        </unzip>
-    </target>        
-
-    <target name="compile" depends="unjar-izpack">
+    <target name="compile" depends="clean">
         <mkdir dir="${rv-install.bin}"/>
-        <javac srcdir="${rv-install.src}" destdir="${rv-install.bin}"/>
+        <javac srcdir="${rv-install.src}" destdir="${rv-install.bin}">
+            <classpath>
+                <fileset dir="${rv-install.izpack}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
         <mkdir dir="${rv-install.res}/panels"/>
-        <jar destfile="${rv-install.res}/panels/RVPanels.jar" basedir="${rv-install.bin}" includes="com/izforge/izpack/panels/*"/>
+        <jar destfile="${rv-install.res}/panels/RVPanels.jar" basedir="${rv-install.bin}" includes="com/izforge/izpack/panels/**"/>
     </target>
 
     <target name="jar" depends="compile">
