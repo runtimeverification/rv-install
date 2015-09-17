@@ -1,17 +1,19 @@
 <userInput>
     <panel order="0" id="rvkey">
         <field type="staticText" align="left"
-            txt="Please enter your $rvFullProductName license email and key.  If you do not have a license for $rvFullProductName, one can be obtained from http://runtimeverification.com/${rvProductId}."
+            txt="To use $rvFullProductName, all you need is an RV account. If you do not have an RV account, one can be obtained from http://runtimeverification.com/licensing.  Log in with your RV account below:"
             id="rvKey.text"/>
         <field type="space" />
         <field type="text" variable="rvKeyEmail">
-            <spec txt="Your license email:" id="rvkey.email.label" size="30"/>
+            <spec txt="Your RV Account email:" id="rvkey.email.label" size="30"/>
         </field>
         <field type="space" />
-        <field type="text" variable="rvKeySecret">
+        <field type="password" variable="rvKeySecret">
             <description align="left"
                 id="rvkey.secret"/>
-            <spec txt="Your license key:" id="rvkey.secret.label" size="30"/>
+            <spec>
+                <pwd txt="Your RV Account password:" id="rvkey.secret.label" size="30"/>
+            </spec>
         </field>
     </panel>
 </userInput>

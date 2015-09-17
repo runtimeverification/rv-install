@@ -1,11 +1,12 @@
 <project name="rv-install" default="all">
 
-    <property name="rv-install.version" value="1.0-SNAPSHOT"/>
+    <property name="rv-install.version" value="1.1-SNAPSHOT"/>
     <property name="rv-install.bin" location="bin"/>
     <property name="rv-install.dist" location="dist"/>
     <property name="rv-install.izpack" location="izpack-5.0-rc2"/>
     <property name="rv-install.res" location="res"/>
     <property name="rv-install.src" location="src"/>
+    <property name="rv-install.lib" location="lib"/>
 
     <target name="clean">
         <!-- Ensure a fresh environment -->
@@ -19,6 +20,9 @@
         <javac srcdir="${rv-install.src}" destdir="${rv-install.bin}">
             <classpath>
                 <fileset dir="${rv-install.izpack}">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${rv-install.lib}">
                     <include name="*.jar"/>
                 </fileset>
             </classpath>

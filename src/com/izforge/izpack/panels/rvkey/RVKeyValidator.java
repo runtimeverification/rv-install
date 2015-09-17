@@ -11,6 +11,10 @@ import com.izforge.izpack.installer.gui.IzPanel;
 
 import java.security.MessageDigest;
 import java.math.BigInteger;
+import java.io.File;
+
+import com.runtimeverification.licensing.Licensing;
+import com.runtimeverification.licensing.RVLicenseCache;
 
 /** Validator to determine whether an RV key is valid, and otherwise not allow install.
  *
@@ -24,33 +28,27 @@ public class RVKeyValidator implements DataValidator
     public Status validateData(InstallData idata) {
         // Run the RV key algorithm on the IZPack rvKeyEmail, rvKeySecret, and rvProductId variables
         String email = idata.getVariables().get("rvKeyEmail").toLowerCase().replaceAll("\\s+", "");
-        String key = idata.getVariables().get("rvKeySecret").replaceAll("\\s+", "");
+        String password = idata.getVariables().get("rvKeySecret").replaceAll("\\s+", "");
         String productId = idata.getVariables().get("rvProductId");
         String fullProductName = idata.getVariables().get("rvFullProductName");
-        String keyBase = email + "runtimeverification_licensees_only" + productId;
-        try {
-            MessageDigest m=MessageDigest.getInstance("MD5");
-            m.update(keyBase.getBytes(),0,keyBase.length());
-            String hashOutput = new BigInteger(1,m.digest()).toString(16);
-            // Pad MD5 with 0's that may have gotten pruned by integer representation
-            while ( hashOutput.length() < 32 ) {
-                hashOutput = "0" + hashOutput;
-            }
-            String expectedString = fullProductName + "#" + hashOutput.substring(0, 10);
-            if (expectedString.equals(key))
-                return Status.OK;
-            return Status.ERROR;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        File licensePath = new File(new File(idata.getVariables().get("INSTALL_PATH")), idata.getVariables().get("rvLicensePath"));
+        licensePath.mkdirs();
+        Licensing licensingSystem = new Licensing(licensePath, "predict");
+        RVLicenseCache licensingCache = licensingSystem.getLicenseCache();
+
+        licensingCache.fetchLatestLicense(email, password);
+
+        if (licensingCache.isLicenseCached() && licensingCache.isLicensed()) {
             return Status.OK;
         }
+
+        return Status.ERROR;
     }
 
     @Override
     public String getErrorMessageId() {
-        return "Sorry, your key is incorrect!  Please generate a new key.  \nIf you believe this message is in error, "
-                + "email us at contact@runtimeverification.com.";
+        return "Sorry, no valid license found for the provided credentials!  \nPlease check runtimeverification.com/licensing to make sure your account details work and your product license is active and valid.  \nIf you believe this message is in error, "
+                + "email us at support@runtimeverification.com.";
     }
 
     @Override
