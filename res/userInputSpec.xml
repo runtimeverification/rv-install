@@ -1,7 +1,7 @@
 <userInput>
     <panel order="0" id="rvkey">
         <field type="staticText" align="left"
-            txt="To use $rvFullProductName, all you need is an RV account. If you do not have an RV account, one can be obtained from http://runtimeverification.com/licensing.  Log in with your RV account below:"
+            txt="To use $rvFullProductName, all you need is an RV account.  Log in with your RV account below, or select the checkbox to install offline.  RV Accounts can be managed at https://runtimeverification.com/licensing."
             id="rvKey.text"/>
         <field type="space" />
         <field type="text" variable="rvKeyEmail">
@@ -15,5 +15,28 @@
                 <pwd txt="Your RV Account password:" id="rvkey.secret.label" size="30"/>
             </spec>
         </field>
+        <field type="space" />
+        <field type="divider" />
+        <field type="check" variable="installOffline">
+          <description align="left" txt="Or, check the below to install offline with a downloaded local RV license file."
+            id="description.check.1"/>
+          <spec txt="Install $rvFullProductName offline instead" id="rvkey.check.label" true="yes" false="no"
+              set="false"/>
+        </field>
+    </panel>
+    <panel order="0" id="rvkeyoffline">
+
+        <field type="staticText" align="left"
+            txt="To install $rvFullProductName offline, a valid RV license file is required.  This file can be obtained at https://runtimeverification.com/licensing with the download option."
+            id="rvKey.text"/>
+        <field type="space" />
+
+
+<field type="staticText" align="left" txt="Select an RV license file:"/>
+ <field type="file" align="left" variable="rvkey.file">
+   <spec txt="" size="25" set="" />
+ </field>
+
+
     </panel>
 </userInput>
