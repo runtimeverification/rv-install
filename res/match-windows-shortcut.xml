@@ -1,0 +1,20 @@
+<shortcuts>
+  <shortcut
+    name="RV-Match MSYS2 Terminal"
+    target="C:\RV-Match\msys2\mingw32_shell.bat"
+    commandLine=""
+    workingDirectory="C:\RV-Match"
+    description="Starts the MSYS2 terminal set up for running RV-Match"
+    iconFile="C:\RV-Match\msys2\msys2.ico"
+    iconIndex="0"
+    initialState="normal"
+    programGroup="no"
+    desktop="yes"
+    applications="no"
+    startMenu="yes"
+    startup="no">
+
+    <createForPack name="RV-Match"/>
+  </shortcut>
+</shortcuts>
+
