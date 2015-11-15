@@ -5,4 +5,5 @@
     <str id="HTMLFinishInfoPanel.headline" txt="Complete" />
     <str id="UserInputPanel.headline" txt="License" />
     <str id="installer.reversetitle" txt="$APP_NAME - Install"/>
+    <str id="UserPathPanel.info" txt="Select a parent path for the examples folder: "/>
 </langpack>
