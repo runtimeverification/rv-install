@@ -36,8 +36,6 @@ public class RVKeyValidator implements DataValidator
         Licensing licensingSystem = new Licensing(licensePath, productId);
         RVLicenseCache licensingCache = licensingSystem.getLicenseCache();
 
-        licensingCache.fetchLatestLicense(email, password);
-
         if (licensingCache.isLicenseCached() && licensingCache.isLicensed()) {
             return Status.OK;
         }
@@ -47,8 +45,7 @@ public class RVKeyValidator implements DataValidator
 
     @Override
     public String getErrorMessageId() {
-        return "Sorry, no valid license found for the provided credentials!  \nPlease check runtimeverification.com/licensing to make sure your account details work and your product license is active and valid.  \nIf you believe this message is in error, "
-                + "email us at support@runtimeverification.com.";
+        return "Sorry, no valid license found for the provided credentials!  \nPlease contact runtimeverification.com/support or your local distributor to obtain an evaluation license.";
     }
 
     @Override
