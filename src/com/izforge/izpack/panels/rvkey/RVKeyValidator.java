@@ -3,15 +3,16 @@
 
 package com.izforge.izpack.panels.rvkey;
 
-import java.util.logging.Logger;
 
 import com.izforge.izpack.api.data.InstallData;
 import com.izforge.izpack.api.installer.DataValidator;
 import com.izforge.izpack.installer.gui.IzPanel;
 
-import java.security.MessageDigest;
-import java.math.BigInteger;
 import java.io.File;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.Collections;
+import java.util.logging.Logger;
 
 import com.runtimeverification.licensing.Licensing;
 import com.runtimeverification.licensing.RVLicenseCache;
@@ -33,7 +34,10 @@ public class RVKeyValidator implements DataValidator
         String fullProductName = idata.getVariables().get("rvFullProductName");
         File licensePath = new File(new File(idata.getVariables().get("INSTALL_PATH")), idata.getVariables().get("rvLicensePath"));
         licensePath.mkdirs();
-        Licensing licensingSystem = new Licensing(licensePath, productId);
+        Licensing licensingSystem = Licensing.fromLocations(
+                productId,
+                Licensing.LicenseLocation.USER_DIRECTORY,
+                Collections.emptyList());
         RVLicenseCache licensingCache = licensingSystem.getLicenseCache();
 
         licensingCache.fetchLatestLicense(email, password);
