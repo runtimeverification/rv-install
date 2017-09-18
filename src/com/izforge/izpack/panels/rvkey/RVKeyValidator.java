@@ -32,8 +32,6 @@ public class RVKeyValidator implements DataValidator
         String password = idata.getVariables().get("rvKeySecret").replaceAll("\\s+", "");
         String productId = idata.getVariables().get("rvProductId");
         String fullProductName = idata.getVariables().get("rvFullProductName");
-        File licensePath = new File(new File(idata.getVariables().get("INSTALL_PATH")), idata.getVariables().get("rvLicensePath"));
-        licensePath.mkdirs();
         Licensing licensingSystem = Licensing.fromLocations(
                 productId,
                 Licensing.LicenseLocation.USER_DIRECTORY,

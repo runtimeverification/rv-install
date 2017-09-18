@@ -20,4 +20,16 @@
             </spec>
         </field>
     </panel>
+    <panel id="sudo">
+        <field type="staticText" align="left"
+               txt="Administrator privileges are necessary for installing RV-Predict-C"/>
+        <field type="staticText" align="left"
+               txt="Please note that passwords are case-sensitive"/>
+        <field type="space" />
+        <field type="password" variable="sudoPassword">
+            <spec>
+                <pwd txt="Please specify your password:" id="sudo.password.label" size="25"/>
+            </spec>
+        </field>
+    </panel>
 </userInput>
