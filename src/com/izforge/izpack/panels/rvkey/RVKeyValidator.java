@@ -14,8 +14,6 @@ import java.security.MessageDigest;
 import java.util.Collections;
 import java.util.logging.Logger;
 
-import javax.net.ssl.SSLEngineResult.Status;
-
 import com.runtimeverification.licensing.Licensing;
 import com.runtimeverification.licensing.RVLicenseCache;
 
