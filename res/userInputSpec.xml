@@ -1,28 +1,5 @@
 <userInput>
-    <!--
-    // Disable email/password and licensing tracking.  
-    <panel order="0" id="rvkey">
-        <field type="staticText" align="left"
-            txt="To use $rvFullProductName, you need an RV account. If you do not have an RV account, one can be obtained from http://runtimeverification.com/licensing. Log in with your RV account below:"
-            id="rvKey.text"/>
-        <field type="space" />
-        <field type="staticText" align="left"
-            txt="If you would like to install offline instead, please contact https://runtimeverfication.com/support for instructions."
-            id="rvKey.offlinetext"/>
-        <field type="space" />
-        <field type="text" variable="rvKeyEmail">
-            <spec txt="Your RV Account email:" id="rvkey.email.label" size="25"/>
-        </field>
-        <field type="space" />
-        <field type="password" variable="rvKeySecret">
-            <description align="left"
-                id="rvkey.secret"/>
-            <spec>
-                <pwd txt="Your RV Account password:" id="rvkey.secret.label" size="25"/>
-            </spec>
-        </field>
-    </panel>
-    -->
+<!-- 
     <panel order="0" id="rvkey">
         <field type="staticText" align="left"
             txt="This is the ${rvFullProductName} installer." id="rvKey.text"/>
@@ -35,6 +12,7 @@
             txt="Click Next to continue installation."
             id="rvKey.offlinetext"/>
     </panel>
+-->
     <panel id="sudo">
         <field type="staticText" align="left"
                txt="Administrator privileges are necessary for installing RV-Predict-C"/>
