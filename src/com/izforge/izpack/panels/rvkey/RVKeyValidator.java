@@ -27,6 +27,10 @@ public class RVKeyValidator implements DataValidator
 
     @Override
     public Status validateData(InstallData idata) {
+        // @rv: We stop checking license
+        return Status.OK;
+
+        /*
         // Run the RV key algorithm on the IZPack rvKeyEmail, rvKeySecret, and rvProductId variables
         String email = idata.getVariables().get("rvKeyEmail").toLowerCase().replaceAll("\\s+", "");
         String password = idata.getVariables().get("rvKeySecret").replaceAll("\\s+", "");
@@ -45,6 +49,7 @@ public class RVKeyValidator implements DataValidator
         }
 
         return Status.ERROR;
+        */
     }
 
     @Override
