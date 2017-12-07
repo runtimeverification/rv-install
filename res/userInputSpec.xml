@@ -1,18 +1,4 @@
 <userInput>
-<!-- 
-    <panel order="0" id="rvkey">
-        <field type="staticText" align="left"
-            txt="This is the ${rvFullProductName} installer." id="rvKey.text"/>
-        <field type="space"/>
-        <field type="staticText" align="left"
-            txt="If you encounter an error during installation, please send email to contact@runtimeverification.com."
-            id="rvKey.offlinetext"/>
-        <field type="space"/>
-        <field type="staticText" align="left"
-            txt="Click Next to continue installation."
-            id="rvKey.offlinetext"/>
-    </panel>
--->
     <panel id="sudo">
         <field type="staticText" align="left"
                txt="Administrator privileges are necessary for installing RV-Predict-C"/>
