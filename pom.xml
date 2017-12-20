@@ -3,28 +3,18 @@
    xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 
    http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <!-- THIS SECTION IS NOT USED
+       NO NEED TO CHANGE HERE -->
   <groupId>com.runtimeverification.install</groupId>
   <artifactId>rv-install</artifactId>
-  <version>1.5.2-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <version>0.0.1-SNAPSHOT</version>
   <name>RV-Install</name>
+  <!-- END OF THE SECTION -->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
-  <distributionManagement>
-    <repository>
-      <id>runtime.verification</id>
-      <name>Runtime Verification Repository</name>
-      <url>s3://repo.runtime.verification/repository/internal</url>
-    </repository>
-    <snapshotRepository>
-      <id>runtime.verification.snapshots</id>
-      <name>Runtime Verification Snapshot Repository</name>
-      <url>s3://repo.runtime.verification/repository/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <build>
     <extensions>
