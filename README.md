@@ -1,13 +1,13 @@
-RV-Install
-=========
+# RV-Install
+
 RV-Install is a unified installer for all RV products.
 
 The idea is to create a single Jar which, when included as a dependency in other projects,
 enables the creation of an installer with all necessary and sufficient features for the
 support of RV Products.
 
-Requirements
-=========
+# Requirements
+
 RV-Install requires Java (7+) and ant to build.  Issue the ant command to build, and ant clean
 to clean.
 
@@ -19,8 +19,21 @@ explicitly defined in the build script of each of the products, which pull their
 runtimeverification.com/dist/rv-install-VERSION.jar (where it is pushed automatically by a Jenkins
 job on master in this repo).
 
-Methodology
-=========
+# Local installation
+
+1. Modify `rv-install.version` property in `build.xml`
+
+2. Run `sh install.sh ${your_version_in_previous_step}`
+
+# Deployment
+
+1. Modify `rv-install.version` property in `build.xml`
+2. Modify `<version>...</version>` in `pom.xml`
+3. Make sure that both versions in step1 and step2 are the same. 
+4. Run `sh deploy.sh`
+
+# Methodology
+
 RV-Install uses IZPack (currently v4.3) to create Java-based installers that work
 cross platform.  Only a single IZPack file is depended on for RV-Install, standalone_compiler.jar
 (in the lib/ directory of this project).
