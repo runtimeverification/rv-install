@@ -21,15 +21,13 @@ job on master in this repo).
 
 # Local installation
 
-1. Modify `rv-install.version` property in `build.xml` to the version you want to install locally.  
-
+1. Modify `rv-install.version` property in `build.xml` to the version that you want to install locally.  
 2. Run `sh install.sh ${version_in_step_1}`
 
 # Deployment
 
-1. Modify `rv-install.version` property in `build.xml` to the version you want to deploy.
-2. Make sure that both versions in `step 1` and `step 2` are the same. 
-3. Run `sh deploy.sh ${version_in_step_1}`
+1. Modify `rv-install.version` property in `build.xml` to the version that you want to deploy remotely.
+2. Run `sh deploy.sh ${version_in_step_1}`
 
 # Methodology
 
