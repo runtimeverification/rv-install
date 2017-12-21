@@ -3,18 +3,47 @@
    xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 
    http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <!-- THIS SECTION IS NOT USED
-       NO NEED TO CHANGE HERE -->
   <groupId>com.runtimeverification.install</groupId>
   <artifactId>rv-install</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.5.3-SNAPSHOT</version>
   <name>RV-Install</name>
-  <!-- END OF THE SECTION -->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.runtimeverification.licensing</groupId>
+      <artifactId>rv-licensing</artifactId>
+      <version>1.4.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-api</artifactId>
+      <version>5.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-gui</artifactId>
+      <version>5.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-installer</artifactId>
+      <version>5.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-panel</artifactId>
+      <version>5.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-util</artifactId>
+      <version>5.0.1</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <extensions>
@@ -24,5 +53,17 @@
         <version>5.0.0.RELEASE</version>
       </extension>
     </extensions>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
