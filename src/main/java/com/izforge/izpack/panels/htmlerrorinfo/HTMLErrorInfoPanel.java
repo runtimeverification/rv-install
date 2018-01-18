@@ -197,8 +197,8 @@ public class HTMLErrorInfoPanel extends IzPanel
         textArea.getDocument().putProperty(Document.StreamDescriptionProperty, null);
         parent.lockPrevButton();
         parent.lockNextButton();
-        parent.setQuitButtonText(parent.getLangpack().getString("FinishPanel.done"));
-        parent.setQuitButtonIcon("done");
+        parent.setQuitButtonText("Quit");
+        parent.setQuitButtonIcon("stop");
         try
         {
             if (!installData.isInstallSuccess()) {
