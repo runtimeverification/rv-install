@@ -1,7 +1,7 @@
 <userInput>
     <panel id="sudo">
         <field type="staticText" align="left"
-               txt="Administrator privileges are necessary for installing RV-Predict/C"/>
+               txt="Administrator privileges are necessary for installing ${rvFullProductName}"/>
         <field type="staticText" align="left"
                txt="Please note that passwords are case-sensitive"/>
         <field type="space" />
