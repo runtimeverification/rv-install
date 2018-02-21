@@ -4,6 +4,7 @@
     <str id="PacksPanel.headline" txt="Packages" />
     <str id="HTMLFinishInfoPanel.headline" txt="Complete" />
     <str id="HTMLErrorInfoPanel.headline" txt="Error" />
+    <str id="HTMLWarningInfoPanel.headline" txt="Warning" />
     <str id="UserInputPanel.headline" txt="Enter password" />
     <str id="installer.reversetitle" txt="$APP_NAME - Install"/>
     <str id="UserPathPanel.info" txt="Select a parent path for the examples folder: "/>
