@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package com.izforge.izpack.panels.htmlerrorinfo;
+package com.izforge.izpack.panels.htmlwarninginfo;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -46,7 +46,7 @@ import com.izforge.izpack.util.HyperlinkHandler;
  *
  * @author Julien Ponge
  */
-public class HTMLErrorInfoPanel extends IzPanel
+public class HTMLWarningInfoPanel extends IzPanel
 {
 
     private static final long serialVersionUID = 3257008769514025270L;
@@ -67,7 +67,7 @@ public class HTMLErrorInfoPanel extends IzPanel
     private JEditorPane textArea;
 
     /**
-     * Constructs an <tt>HTMLErrorInfoPanel</tt>.
+     * Constructs an <tt>HTMLWarningInfoPanel</tt>.
      *
      * @param panel       the panel meta-data
      * @param parent      the parent window
@@ -75,13 +75,13 @@ public class HTMLErrorInfoPanel extends IzPanel
      * @param resources   the resources
      * @param log         the log
      */
-    public HTMLErrorInfoPanel(Panel panel, InstallerFrame parent, GUIInstallData installData, Resources resources, Log log)
+    public HTMLWarningInfoPanel(Panel panel, InstallerFrame parent, GUIInstallData installData, Resources resources, Log log)
     {
-        this(panel, parent, installData, "HTMLErrorInfoPanel", true, resources, log);
+        this(panel, parent, installData, "HTMLWarningInfoPanel", true, resources, log);
     }
 
     /**
-     * Constructs an <tt>HTMLErrorInfoPanel</tt>.
+     * Constructs an <tt>HTMLWarningInfoPanel</tt>.
      *
      * @param panel             the panel  meta-data
      * @param parent            the parent window
@@ -91,7 +91,7 @@ public class HTMLErrorInfoPanel extends IzPanel
      * @param resources         the resources
      * @param log               the log
      */
-    public HTMLErrorInfoPanel(Panel panel, InstallerFrame parent, GUIInstallData installData,
+    public HTMLWarningInfoPanel(Panel panel, InstallerFrame parent, GUIInstallData installData,
                          String resPrefixStr, boolean showInfoLabelFlag, Resources resources, Log log)
     {
         super(panel, parent, installData, new IzPanelLayout(log), resources);
@@ -195,10 +195,6 @@ public class HTMLErrorInfoPanel extends IzPanel
         // Clear this property to get the document to reload and perform variable substitution.
         // See JEditorPane.setPage javadoc.
         textArea.getDocument().putProperty(Document.StreamDescriptionProperty, null);
-        parent.lockPrevButton();
-        parent.lockNextButton();
-        parent.setQuitButtonText("Quit");
-        parent.setQuitButtonIcon("stop");
         try
         {
             textArea.setPage(loadHTMLInfoContent());
